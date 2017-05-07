@@ -28,7 +28,10 @@ Telegram::Bot::Client.run(token, logger: Logger.new($stderr)) do |bot|
   bot.listen do |message|
     if text = message.text
       text = text.downcase
-      if %w[300 ста сты].include?(text[-3..-1])
+      if text.include?('отсоси') && text.include?('у') && text.include?('тракториста')
+        bot.api.send_message(chat_id: message.chat.id, text: "ТРАКТОРИСТ СЕГОДНЯ Я, ОТСОСИ ТЫ У МЕНЯ")
+        track('reverse_traktorist', message, bot)
+      elsif %w[300 ста сты].include?(text[-3..-1])
         bot.api.send_message(chat_id: message.chat.id, text: "ОТСОСИ У ТРАКТОРИСТА")
         track('traktorist', message, bot)
       elsif text.end_with?('нет')
