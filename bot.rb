@@ -1,6 +1,9 @@
 require 'telegram/bot'
 require 'telegram/bot/botan'
 require 'unicode'
+require 'dotenv/load'
+require 'byebug'
+
 class String
   def downcase
     Unicode::downcase(self)
@@ -28,7 +31,17 @@ Telegram::Bot::Client.run(token, logger: Logger.new($stderr)) do |bot|
   bot.listen do |message|
     if text = message.text
       text = text.downcase
-      if text.include?('отсоси') && text.include?('у') && text.include?('тракториста')
+
+      if text.include?('годен') && text.include?('я') && text.include?('сомнений') && text.include?('нет') && text.include?('лучше') && text.include?('сделай') && text.include?('мне') && text.include?('минет')
+        bot.api.send_message(chat_id: message.chat.id, text: "А СОМНЕНЬЯ ЕСТЬ ВСЕГДА, ЛУЧШЕ НЮХАЙ ТРИ ХУЯ")
+        track('somneniya_est', message, bot)
+      elsif text.include?('в') && text.include?('трактористы') && text.include?('ты') && text.include?('не') && text.include?('годен') && text.include?('отсоси') && text.include?('и') && text.include?('будь') && text.include?('свободен')
+        bot.api.send_message(chat_id: message.chat.id, text: "ГОДЕН Я, СОМНЕНИЙ НЕТ, ЛУЧШЕ СДЕЛАЙ МНЕ МИНЕТ")
+        track('somneniy_net', message, bot)
+      elsif text.include?('тракторист') && text.include?('сегодня') && text.include?('я') && text.include?('отсоси') && text.include?('ты') && text.include?('у') && text.include?('меня')
+        bot.api.send_message(chat_id: message.chat.id, text: "В ТРАКТОРИСТЫ ТЫ НЕ ГОДЕН, ОТСОСИ И БУДЬ СВОБОДЕН")
+        track('ne_goden', message, bot)
+      elsif text.include?('отсоси') && text.include?('у') && text.include?('тракториста')
         bot.api.send_message(chat_id: message.chat.id, text: "ТРАКТОРИСТ СЕГОДНЯ Я, ОТСОСИ ТЫ У МЕНЯ")
         track('reverse_traktorist', message, bot)
       elsif %w[300 ста сты].include?(text[-3..-1])
