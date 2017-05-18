@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/trista_bot"
+
+TristaBot::Listener.new(ENV["TELEGRAM_TOKEN"], ENV["BOTAN_TOKEN"], Logger.new($stderr)).start

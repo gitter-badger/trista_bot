@@ -15,4 +15,4 @@ RUN bundle install
 
 COPY . /usr/app
 
-CMD ruby bot.rb
+CMD bin/start
