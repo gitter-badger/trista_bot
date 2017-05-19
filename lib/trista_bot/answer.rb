@@ -32,7 +32,7 @@ module TristaBot
     private
 
       def text
-        @message.text.downcase
+        @message.text&.downcase || ''
       end
 
       def somneniya_est_matches?
