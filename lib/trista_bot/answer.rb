@@ -64,7 +64,7 @@ module TristaBot
       end
 
       def hui_na_matches?
-        text.include?('а?')
+        text.include?(' а?') || text == 'а?'
       end
 
       def hui_matches?
