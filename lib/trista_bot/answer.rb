@@ -52,7 +52,7 @@ module TristaBot
       end
 
       def traktorist_matches?
-        %w[300 ста сты].include?(text[-3..-1])
+        %w[300 ста].include?(text[-3..-1])
       end
 
       def pidor_matches?
