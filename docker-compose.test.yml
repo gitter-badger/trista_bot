@@ -1,0 +1,4 @@
+sut:
+   build: .
+   command: bundle exec rspec
+
