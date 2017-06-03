@@ -9,6 +9,7 @@ module TristaBot
     pomponil: "Я ТВОЙ ПОНЯЛ НА ХУЮ ПУМПОНИЛ",
     hui_na: "ХУЙ НА",
     hui: "ХУЙ СОСАЛ НЕВКУСНЫЙ???",
+    da: "ПИЗДА",
   }
 
   class Answer
@@ -69,6 +70,10 @@ module TristaBot
 
       def hui_matches?
         text.end_with?('устный') || text.end_with?('усный')
+      end
+
+      def da_matches?
+        text.end_with?('да?')
       end
   end
 end
