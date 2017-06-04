@@ -1,3 +1,5 @@
 FROM ruby:2.4-onbuild
 
+ENV CI true
+
 CMD bin/ci
